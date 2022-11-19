@@ -87,7 +87,7 @@ int[,] DeleteRowCol(int[,] matrix, int[] array)
     return delcol;
 }
 
-
+Console.WriteLine("Найти произведение двух матриц");
 int[,] matr1 = CreateMatrix(4, 4, 1, 10);
 PrintMatrix(matr1);
 Console.WriteLine();
@@ -105,11 +105,13 @@ Console.WriteLine();
 Console.ReadKey();
 Console.Clear();
 
+Console.WriteLine("В двумерном массиве целых чисел удалить строку и столбец, на пересечении которых расположен наименьший элемент.");
 PrintMatrix(matr1);
 Console.WriteLine();
 int[] minPosition = new int[2];
 minPosition = MinElement(matr1);
-Console.WriteLine($"Строка с мин элементом {minPosition[0]}");
-Console.WriteLine($"Столбец с мин элементом {minPosition[1]}");
+Console.WriteLine($"Строка с минимальным элементом: {minPosition[0]}");
+Console.WriteLine($"Столбец с мининимальным элементом: {minPosition[1]}");
 int[,] matrix = DeleteRowCol(matr1, minPosition);
+Console.WriteLine("Если удалить строку и столбец с минимальным элементом, то получится матрица: ");
 PrintMatrix(matrix);
