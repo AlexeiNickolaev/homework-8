@@ -86,6 +86,39 @@ int[,] DeleteRowCol(int[,] matrix, int[] array)
     }
     return delcol;
 }
+// Сформировать трехмерный массив и вывести его на экран
+int[,,]Create3DMatrix(int rows, int columns, int depth, int min, int max)
+{
+    int[,,] matrix = new int[rows, columns, depth];
+    Random rnd= new Random();
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            for (int k = 0; k < matrix.GetLength(2); k++)
+            {
+                matrix[i, j, k]= rnd.Next(min, max);
+            }
+        }
+    }
+    return matrix;
+}
+void Print3DMatrix(int[,,]matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        Console.Write("[");
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            for (int k = 0; k < matrix.GetLength(2); k++)
+            {
+                Console.Write($"{matrix[i, j, k],4} ({i}, {j}, {k}), ");
+            }
+        }
+        Console.WriteLine("]");
+    }
+}
+
 
 Console.WriteLine("Найти произведение двух матриц");
 int[,] matr1 = CreateMatrix(4, 4, 1, 10);
@@ -115,3 +148,9 @@ Console.WriteLine($"Столбец с мининимальным элемент�
 int[,] matrix = DeleteRowCol(matr1, minPosition);
 Console.WriteLine("Если удалить строку и столбец с минимальным элементом, то получится матрица: ");
 PrintMatrix(matrix);
+Console.ReadKey();
+Console.Clear();
+
+Console.WriteLine("Сформировать трехмерный массив и вывести его на экран");
+int[,,]matrix3D=Create3DMatrix(2, 2, 3, 1, 10);
+Print3DMatrix(matrix3D);
